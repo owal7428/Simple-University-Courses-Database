@@ -97,6 +97,22 @@ void addHelper(Professor *&node, Professor *root)
 
 Professor* ProfBST::searchProfessor(string profId)
 {
+    return searchHelper(root, profId);
+}
+
+Professor* searchHelper(Professor *root, string profId)
+{
+    if (root == nullptr)
+        return nullptr;
+    
+    if (profId == root -> profId)
+        return root;
+    
+    else if (profId > root -> profId)
+        return searchHelper(root -> right, profId);
+    
+    else if (profId < root -> profId)
+        return searchHelper(root -> left, profId);
 
 }
 
