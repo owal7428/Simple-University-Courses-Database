@@ -102,6 +102,8 @@ Professor* ProfBST::searchProfessor(string profId)
 
 Professor* searchHelper(Professor *root, string profId)
 {
+    Professor *temp = nullptr;
+
     if (root == nullptr)
         return nullptr;
     
@@ -109,10 +111,12 @@ Professor* searchHelper(Professor *root, string profId)
         return root;
     
     else if (profId > root -> profId)
-        return searchHelper(root -> right, profId);
+        temp = searchHelper(root -> right, profId);
     
     else if (profId < root -> profId)
-        return searchHelper(root -> left, profId);
+        temp = searchHelper(root -> left, profId);
+    
+    return temp;
 
 }
 
