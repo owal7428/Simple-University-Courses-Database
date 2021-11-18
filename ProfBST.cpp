@@ -57,7 +57,7 @@ void ProfBST::addProfessor(string profId, string profName)
     
     Professor *newProfessor = new Professor();  //Creates the new Professor object
 
-    newProfessor -> profName = profName;        //Sets all of the variables for the new object
+    newProfessor -> profName = profName;    //Sets all of the variables for the new object
     newProfessor -> profId = profId;
     newProfessor -> right = nullptr;
     newProfessor -> left = nullptr;
