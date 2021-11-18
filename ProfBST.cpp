@@ -10,9 +10,10 @@
 
 using namespace std;
 
+//Does basically nothing, not even gonna waste my time on fancy comments
 ProfBST::ProfBST()
 {
-
+    root = NULL;
 }
 
 //-----------------------------------------------------------------------------
@@ -20,6 +21,7 @@ ProfBST::ProfBST()
 //Parameters:   None
 //Returns:      Nothing
 //-----------------------------------------------------------------------------
+//Why am I even doing this for one line of code?!?
 
 ProfBST::~ProfBST()
 {
@@ -38,7 +40,7 @@ void deleteAll(Professor* node)
     deleteAll(node -> left);    //Post-order traversal for the BST
     deleteAll(node -> right);   
 
-    delete node;                //Deletes node (eat shit)!
+    delete node;                //Deletes node (yeeet)!
 }
 
 void ProfBST::addProfessor(string profId, string profName)
