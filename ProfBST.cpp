@@ -122,7 +122,20 @@ Professor* searchHelper(Professor *root, string profId)
 
 void ProfBST::publicSearchProfessor(string profId)
 {
+    Professor *temp = searchProfessor(profId);
 
+    if (!temp)
+    {
+        cout << "Professor not found." << endl;
+        return;
+    }
+
+    for (int i = 0; i < temp -> coursesTaught.size(); i++)
+    {
+        cout << "- " << temp -> coursesTaught[i] -> courseNum << ": ";
+        cout << temp -> coursesTaught[i] -> courseName << ", ";
+        cout << temp -> coursesTaught[i] -> year << endl;
+    }
 }
 
 void ProfBST::displayProfessorInfo(Professor* p)
