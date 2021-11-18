@@ -18,6 +18,7 @@ using namespace std;
 struct Professor;
 
 struct Course
+{
 
 	int year;            // e.g. 2021
 	string department;   // e.g. CSCI
