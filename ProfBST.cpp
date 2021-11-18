@@ -13,15 +13,15 @@ using namespace std;
 //Does basically nothing, not even gonna waste my time on this one
 ProfBST::ProfBST()
 {
-    root = NULL;    //Seriously, one line?!
+    root = NULL;
 }
+
 
 //-----------------------------------------------------------------------------
 //~ProfBST:         Self deletion method
 //Parameters:       None
 //Returns:          Nothing
 //-----------------------------------------------------------------------------
-//Why am I even doing this for one line of code?!?
 
 ProfBST::~ProfBST()
 {
@@ -40,7 +40,7 @@ void deleteAll(Professor* node)
     deleteAll(node -> left);    //Post-order traversal for the BST
     deleteAll(node -> right);   
 
-    delete node;                //Deletes node (yeeet)!
+    delete node;    //Deletes node.
 }
 
 
@@ -66,10 +66,12 @@ void ProfBST::addProfessor(string profId, string profName)
         root = newProfessor;    //If it does not, it makes the root equal to the new node
     
     else
-        addHelper(newProfessor, root);      //Recursive loop to place new object in the correct position
+        addHelper(newProfessor, root);  //Recursive loop to place new object in the correct position
     
     
 }
+
+
 //-----------------------------------------------------------------------------
 //addHelper:        Searches for the correct place to insert new node
 //Parameters:       Node to be inserted, Node that is being checked
@@ -78,7 +80,7 @@ void ProfBST::addProfessor(string profId, string profName)
 
 void addHelper(Professor *&node, Professor *root)
 {
-    if (root == nullptr)        //If the current node being searched is null, insert here
+    if (root == nullptr)    //If the current node being searched is null, insert here
     {
         root = node;
         return;
