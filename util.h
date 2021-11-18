@@ -19,7 +19,6 @@ struct Professor;
 
 struct Course
 {
-
 	int year;            // e.g. 2021
 	string department;   // e.g. CSCI
     int courseNum;       // e.g. 2270
