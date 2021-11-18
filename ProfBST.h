@@ -26,7 +26,8 @@ struct Professor
 	Professor *right;
 
 	Professor() {}
-	Professor(string pId, string pName) { 
+	Professor(string pId, string pName)
+	{ 
 		profId = pId; 
 		profName = pName;
 		left = nullptr; right = nullptr; 
