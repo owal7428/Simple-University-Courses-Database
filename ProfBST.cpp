@@ -15,9 +15,30 @@ ProfBST::ProfBST()
 
 }
 
+//-----------------------------------------------------------------------------
+//~ProfBST:     Self deletion method
+//Parameters:   None
+//Returns:      Nothing
+//-----------------------------------------------------------------------------
+
 ProfBST::~ProfBST()
 {
+    deleteAll(root);    //Starts the deleteAll recursive loop at the root node
+}
 
+
+//-----------------------------------------------------------------------------
+//deleteAll:    Helper function for ~ProfBST
+//Parameters:   Pointer to professor object
+//Returns:      Void
+//-----------------------------------------------------------------------------
+
+void deleteAll(Professor* node)
+{
+    deleteAll(node -> left);    //Post-order traversal for the BST
+    deleteAll(node -> right);   
+
+    delete node;                //Deletes node (eat shit)!
 }
 
 void ProfBST::addProfessor(string profId, string profName)
