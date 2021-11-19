@@ -10,19 +10,14 @@
 
 using namespace std;
 
-//Does basically nothing, not even gonna waste my time on this one
+//Constructor
 ProfBST::ProfBST()
 {
     root = NULL;
 }
 
 
-//-----------------------------------------------------------------------------
-//~ProfBST:         Self deletion method
-//Parameters:       None
-//Returns:          Nothing
-//-----------------------------------------------------------------------------
-
+//Destructor
 ProfBST::~ProfBST()
 {
     deleteAll(root);    //Starts the deleteAll recursive loop at the root node
