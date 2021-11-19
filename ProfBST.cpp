@@ -16,20 +16,20 @@ ProfBST::ProfBST()
     root = NULL;
 }
 
-
 //Destructor
 ProfBST::~ProfBST()
 {
     deleteAll(root);    //Starts the deleteAll recursive loop at the root node
 }
 
+/*
+================
+deleteAll
 
-//-----------------------------------------------------------------------------
-//deleteAll:        Helper function for ~ProfBST
-//Parameters:       Pointer to professor object
-//Returns:          Void
-//-----------------------------------------------------------------------------
-
+Helper function for ~ProfBST
+Recursively goes through every node and deletes
+================
+*/
 void deleteAll(Professor* node)
 {
     deleteAll(node -> left);    //Post-order traversal for the BST
@@ -38,13 +38,13 @@ void deleteAll(Professor* node)
     delete node;    //Deletes node.
 }
 
+/*
+================
+addProfessor
 
-//-----------------------------------------------------------------------------
-//addProfessor:     Adds a new node to the BST
-//Parameters:       Two string variables
-//Returns:          Void
-//-----------------------------------------------------------------------------
-
+Creates new Professor node and then inserts into BST object
+================
+*/
 void ProfBST::addProfessor(string profId, string profName)
 {
     if (searchProfessor(profId))    //Checks to see if the professor already exists in the tree
@@ -66,13 +66,14 @@ void ProfBST::addProfessor(string profId, string profName)
     
 }
 
+/*
+================
+//addHelper
 
-//-----------------------------------------------------------------------------
-//addHelper:        Searches for the correct place to insert new node
-//Parameters:       Node to be inserted, Node that is being checked
-//Returns:          Void
-//-----------------------------------------------------------------------------
-
+Helper to addProfessor function
+Recursively looks through BST to find correct location for new node
+================
+*/
 void addHelper(Professor *&node, Professor *root)
 {
     if (root == nullptr)    //If the current node being searched is null, insert here
