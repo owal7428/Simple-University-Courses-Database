@@ -43,6 +43,11 @@ int HashChaining::hash(int courseNumber)
     return courseNumber % hashTableSize;
 }
 
+/*
+================
+bulkInsert
+================
+*/
 void HashChaining::bulkInsert(string filename)
 {
 
@@ -53,9 +58,27 @@ void HashChaining::search(int courseYear, int courseNumber, string profId)
 
 }
 
+/*
+================
+displayAllCourses
+
+Displays all of the courses in the hash table
+================
+*/
 void HashChaining::displayAllCourses()
 {
+    for (int i = 0; i < hashTableSize; i++) //Loops through index of the hashTable
+    {
+        Course *temp = hashTable[i];
+        
+        while (temp != nullptr)     //Prints out every node in the index
+        {
+            cout << temp -> year << " " << temp -> courseName << " ";
+            cout << temp -> courseNum << " " << temp -> prof << endl;
 
+            temp = temp -> next;
+        }
+    }
 }
 
 void HashChaining::displayCourseInfo(Course* c)
