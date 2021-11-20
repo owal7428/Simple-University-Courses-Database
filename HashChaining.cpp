@@ -153,5 +153,9 @@ void HashChaining::displayAllCourses()
 //Prints out the info about a course
 void HashChaining::displayCourseInfo(Course* c)
 {
-    cout << c -> year << " " << c -> courseName << " " << c -> courseNum << " " << c -> prof << endl;
+    if (!c)
+        cout << "Course was not found." << endl;
+    
+    else
+        cout << c -> year << " " << c -> courseName << " " << c -> courseNum << " " << c -> prof << endl;
 }
