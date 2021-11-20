@@ -73,9 +73,7 @@ void HashChaining::displayAllCourses()
         
         while (temp != nullptr)     //Prints out every node in the index
         {
-            cout << temp -> year << " " << temp -> courseName << " ";
-            cout << temp -> courseNum << " " << temp -> prof << endl;
-
+            cout << temp -> year << " " << temp -> courseName << " " << temp -> courseNum << " " << temp -> prof << endl;
             temp = temp -> next;
         }
     }
