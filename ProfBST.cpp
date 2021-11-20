@@ -128,15 +128,15 @@ Finds professor node with specific ID and prints the courses they've taught
 */
 void ProfBST::publicSearchProfessor(string profId)
 {
-    Professor *temp = searchProfessor(profId);
+    Professor *temp = searchProfessor(profId);  //Creates temporary professor node
 
-    if (!temp)
+    if (!temp)  //Checks if professor exists or not
     {
         cout << "Professor not found." << endl;
         return;
     }
 
-    for (int i = 0; i < temp -> coursesTaught.size(); i++)
+    for (int i = 0; i < temp -> coursesTaught.size(); i++)  //Goes through every course the professor has taught
     {
         cout << "- " << temp -> coursesTaught[i] -> courseNum << ": ";
         cout << temp -> coursesTaught[i] -> courseName << ", ";
