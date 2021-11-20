@@ -85,10 +85,8 @@ void HashChaining::bulkInsert(string filename)
         profDb.addProfessor(array[4], profName);                //Adds professor to the profDB if it doesn't already exist
         Professor *newProf = profDb.searchProfessor(profName);  //Creates temp professor object
 
-        
         Course *newCourse = new Course(stoi(array[0]), array[1], stoi(array[2]), array[3], newProf);    //Creates new course object
         newProf -> coursesTaught.push_back(newCourse);                                                  //Adds the new course object to courses taught
-
     }
 }
 
