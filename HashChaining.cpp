@@ -15,7 +15,7 @@ HashChaining::HashChaining(int size)
 
     hashTable = new Course*[hashTableSize]; //Sets the size of hashTable
 
-    for (int i = 0; i < hashTableSize; i++)
+    for (int i = 0; i < hashTableSize; i++) //Sets every index to nullptr
         hashTable[i] = nullptr;
 }
 
