@@ -23,6 +23,8 @@ int main (int argc, char* argv[])
         return 0;
     }
 
+    string filename = argv[1];
+
     HashChaining chainHash(stoi(argv[2]));
     //HashOpenAddressing openHash(stoi(argv[2]));
 
@@ -35,7 +37,39 @@ int main (int argc, char* argv[])
         cout << "4. Display all courses" << endl;
         cout << "5. Exit" << endl;
 
-        int choice = 0;
+        int choice;
+        cout << "Enter an option: ";
+        cin >> choice;
+
+        if (choice == 1)
+        {
+            cout << "[OPEN ADDRESSING] Hash table populated" << endl;
+            cout << "--------------------------------------" << endl;
+            //openHash.bulkInsert(filename);
+            cout << "[CHAINING] Hash table populated" << endl;
+            cout << "-------------------------------" << endl;
+            chainHash.bulkInsert(filename);
+        }
+        else if (choice == 2)
+        {
+
+        }
+        else if (choice == 3)
+        {
+
+        }
+        else if (choice == 4)
+        {
+
+        }
+        else if (choice == 5)
+        {
+
+        }
+        else
+        {
+            cout << "Improper input" << endl;
+        }
     }
 
     return 0;
