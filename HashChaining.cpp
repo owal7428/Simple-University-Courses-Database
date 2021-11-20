@@ -49,6 +49,11 @@ int HashChaining::hash(int courseNumber)
 /*
 ================
 bulkInsert
+
+Reads every line in the csv file give (except for the first line)
+Creates new professor object if one doesn't already exist for the professor for a course
+Creates new course object and adds it to the hash table
+Resolves collisions using chaining (linked lists)
 ================
 */
 void HashChaining::bulkInsert(string filename)
@@ -130,6 +135,9 @@ void HashChaining::bulkInsert(string filename)
 /*
 ================
 search
+
+Loops through every node in index until it finds one with matching info
+If no node is found, nullptr is passed to displayCourseInfo
 ================
 */
 void HashChaining::search(int courseYear, int courseNumber, string profId)
@@ -139,13 +147,13 @@ void HashChaining::search(int courseYear, int courseNumber, string profId)
 
     Course *temp = nullptr;
 
-    Course *curr = hashTable[index];
+    Course *curr = hashTable[index];    //Used to traverse linked list
     
     while (curr != nullptr)
     {
         if (curr -> year == courseYear && curr -> courseNum == courseNumber && curr -> prof -> profId == profId)
         {
-            temp = curr;
+            temp = curr;    //If target node is found, set temp pointer equal to target pointer
             break;
         }
 
