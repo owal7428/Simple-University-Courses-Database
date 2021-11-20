@@ -37,6 +37,7 @@ HashChaining::~HashChaining()
 
 }
 
+//Hash algorithm
 int HashChaining::hash(int courseNumber)
 {
     return courseNumber % hashTableSize;
