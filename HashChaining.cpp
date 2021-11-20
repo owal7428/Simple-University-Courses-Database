@@ -51,23 +51,25 @@ bulkInsert
 void HashChaining::bulkInsert(string filename)
 {
     ifstream file (filename);
-    int index;
-
-    bool topOfFile = true;
     
-    if (file.fail())
+    if (file.fail())    //Checks if file exists
     {
         cout << "Failed to open the file." << endl;
         return;
     }
-    
+
+    int numCollisions = 0;
+    int numSearches = 0;
+
+    bool topOfFile = true;
+
     string inputstr;
 
-    while (file >> inputstr)
+    while (file >> inputstr)    //Loops through every line of the csv file
     {
-        if (topOfFile == true)
+        if (topOfFile == true)  //Checks if the current line is the top
         {
-            topOfFile = false;
+            topOfFile = false;  //Skips the line if it is
             continue;
         }
 
@@ -75,7 +77,7 @@ void HashChaining::bulkInsert(string filename)
         string array[7];
 
         int i = 0;
-        while (getline(tempstr, inputstr, ','))
+        while (getline(tempstr, inputstr, ',')) //Loops through every word in the current line
         {
             array[i] = inputstr;
             i++;
@@ -87,9 +89,41 @@ void HashChaining::bulkInsert(string filename)
 
         Course *newCourse = new Course(stoi(array[0]), array[1], stoi(array[2]), array[3], newProf);    //Creates new course object
         newProf -> coursesTaught.push_back(newCourse);                                                  //Adds the new course object to courses taught
+
+        int index = hash(stoi(array[2]));
+
+        if (hashTable[index])   //Checks for collision
+        {
+            numCollisions++;
+
+            Course *temp = hashTable[index];
+
+            while (temp -> next != nullptr) //Loops through linked list until empty node is found
+            {
+                numSearches++;
+                temp = temp -> next;
+            }
+
+            numSearches++;
+
+            temp -> next = newCourse;       //Places newCourse into the LL
+            newCourse -> previous = temp;
+        }
+        else
+        {
+            hashTable[index] = newCourse;
+        }
     }
+
+    cout << "Collisions using chaining: " << numCollisions << endl;
+    cout << "Search operations using chaining: " << numSearches << endl;
 }
 
+/*
+================
+search
+================
+*/
 void HashChaining::search(int courseYear, int courseNumber, string profId)
 {
     int index = hash(courseNumber);
@@ -110,13 +144,14 @@ void HashChaining::displayAllCourses()
         
         while (temp != nullptr)     //Prints out every node in the index
         {
-            cout << temp -> year << " " << temp -> courseName << " " << temp -> courseNum << " " << temp -> prof << endl;
+            displayCourseInfo(temp);
             temp = temp -> next;
         }
     }
 }
 
+//Prints out the info about a course
 void HashChaining::displayCourseInfo(Course* c)
 {
-
+    cout << c -> year << " " << c -> courseName << " " << c -> courseNum << " " << c -> prof << endl;
 }
