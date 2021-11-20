@@ -127,6 +127,30 @@ search
 void HashChaining::search(int courseYear, int courseNumber, string profId)
 {
     int index = hash(courseNumber);
+    int numSearches = 0;
+
+    Course *temp = nullptr;
+
+    Course *curr = hashTable[index];
+    
+    while (curr != nullptr)
+    {
+        if (curr -> year == courseYear && curr -> courseNum == courseNumber && curr -> prof -> profId == profId)
+        {
+            temp = curr;
+            break;
+        }
+
+        curr = curr -> next;
+        numSearches++;
+    }
+
+    if (temp != nullptr)
+    {
+        cout << "Search operations using open addressing: " << numSearches << endl;
+    }
+
+    displayCourseInfo(temp);
 }
 
 /*
