@@ -24,7 +24,7 @@ int main (int argc, char* argv[])
     }
 
     HashChaining chainHash(stoi(argv[2]));
-    HashOpenAddressing openHash(stoi(argv[2]));
+    //HashOpenAddressing openHash(stoi(argv[2]));
 
     while (true)
     {
