@@ -46,7 +46,7 @@ Helper to addProfessor function
 Recursively looks through BST to find correct location for new node
 ================
 */
-void addHelper(Professor *&node, Professor *root)
+void addHelper(Professor *&node, Professor *&root)
 {
     if (root == nullptr)    //If the current node being searched is null, insert here
     {
