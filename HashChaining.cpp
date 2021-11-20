@@ -21,7 +21,7 @@ HashChaining::~HashChaining()
 {
     profDb.~ProfBST();  //Deletes the BST of professors
 
-    for (int i = 0; i < hashTableSize; i++)     //Loops through index of the hashTable
+    for (int i = 0; i < hashTableSize; i++) //Loops through index of the hashTable
     {
         Course *temp = hashTable[i];
         
@@ -33,7 +33,7 @@ HashChaining::~HashChaining()
         }
     }
 
-    delete[] hashTable;     //Deletes array of pointers
+    delete[] hashTable; //Deletes array of pointers
 
 }
 
