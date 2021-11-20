@@ -23,13 +23,19 @@ int main (int argc, char* argv[])
         return 0;
     }
 
-    ifstream file (argv[1]);
+    HashChaining chainHash(stoi(argv[2]));
+    HashOpenAddressing openHash(stoi(argv[2]));
 
-    if (file.fail())
+    while (true)
     {
-        cout << "Failed to open the file." << endl;
+        cout << "========Main Menu========" << endl;
+        cout << "1. Populate hash tables" << endl;
+        cout << "2. Search for a course" << endl;
+        cout << "3. Search for a professor" << endl;
+        cout << "4. Display all courses" << endl;
+        cout << "5. Exit" << endl;
 
-        return 0;
+        int choice = 0;
     }
 
     return 0;
