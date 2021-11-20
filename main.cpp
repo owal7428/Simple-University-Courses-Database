@@ -23,6 +23,8 @@ int main (int argc, char* argv[])
         return 0;
     }
 
+    //Note: hashtable size needs to be the number of lines in the file - 1 to account for the top line being skipped
+
     string filename = argv[1];
 
     HashChaining chainHash(stoi(argv[2]));
@@ -30,16 +32,19 @@ int main (int argc, char* argv[])
 
     while (true)
     {
+        cout << endl;
         cout << "========Main Menu========" << endl;
         cout << "1. Populate hash tables" << endl;
         cout << "2. Search for a course" << endl;
         cout << "3. Search for a professor" << endl;
         cout << "4. Display all courses" << endl;
         cout << "5. Exit" << endl;
+        cout << endl;
 
         int choice;
         cout << "Enter an option: ";
         cin >> choice;
+        cout << endl;
 
         if (choice == 1)
         {
@@ -70,6 +75,8 @@ int main (int argc, char* argv[])
         {
             cout << "Improper input" << endl;
         }
+
+        
     }
 
     return 0;
