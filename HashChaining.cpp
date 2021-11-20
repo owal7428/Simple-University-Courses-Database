@@ -50,7 +50,13 @@ bulkInsert
 */
 void HashChaining::bulkInsert(string filename)
 {
+    ifstream file (filename);
 
+    if (file.fail())
+    {
+        cout << "Failed to open the file." << endl;
+        return;
+    }
 }
 
 void HashChaining::search(int courseYear, int courseNumber, string profId)
