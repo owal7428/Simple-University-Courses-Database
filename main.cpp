@@ -51,13 +51,33 @@ int main (int argc, char* argv[])
             cout << "[OPEN ADDRESSING] Hash table populated" << endl;
             cout << "--------------------------------------" << endl;
             //openHash.bulkInsert(filename);
+            cout << endl;
             cout << "[CHAINING] Hash table populated" << endl;
             cout << "-------------------------------" << endl;
             chainHash.bulkInsert(filename);
         }
         else if (choice == 2)
         {
+            cout << "Enter the course year (e.g. 2021):" << endl;
+            int year;
+            cin >> year;
 
+            cout << "Enter a course number (e.g. 2270):" << endl;
+            int courseNum;
+            cin >> courseNum;
+
+            cout << "Enter a Professor's ID (e.g. llytellf):" << endl;
+            string Id;
+            cin >> Id;
+
+            cout << endl;
+            cout << "[OPEN ADDRESSING] Search for a course" << endl;
+            cout << "-------------------------------------" << endl;
+            //openHash.search(year, courseNum, Id);
+            cout << endl;
+            cout << "[CHAINING] Search for a course" << endl;
+            cout << "------------------------------" << endl;
+            chainHash.search(year, courseNum, Id);
         }
         else if (choice == 3)
         {
