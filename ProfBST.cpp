@@ -136,15 +136,24 @@ void ProfBST::publicSearchProfessor(string profId)
         return;
     }
 
-    for (int i = 0; i < temp -> coursesTaught.size(); i++)  //Goes through every course the professor has taught
-    {
-        cout << "- " << temp -> coursesTaught[i] -> courseNum << ": ";
-        cout << temp -> coursesTaught[i] -> courseName << ", ";
-        cout << temp -> coursesTaught[i] -> year << endl;
-    }
+    displayProfessorInfo(temp);    
 }
 
+/*
+================
+publicSearchProfessor
+
+Prints info of professor node passed through as a parameter
+================
+*/
 void ProfBST::displayProfessorInfo(Professor* p)
 {
+    cout << "Name: " << p -> profName << endl;  //Prints name of professor
 
+    for (int i = 0; i < p -> coursesTaught.size(); i++)  //Goes through every course the professor has taught
+        {
+            cout << "-" << p -> coursesTaught[i] -> courseNum << ": ";
+            cout << p -> coursesTaught[i] -> courseName << ", ";
+            cout << p -> coursesTaught[i] -> year << endl;
+        }
 }
