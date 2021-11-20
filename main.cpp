@@ -64,7 +64,7 @@ int main (int argc, char* argv[])
         }
         else if (choice == 5)
         {
-
+            break;
         }
         else
         {
