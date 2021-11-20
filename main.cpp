@@ -75,8 +75,6 @@ int main (int argc, char* argv[])
         {
             cout << "Improper input" << endl;
         }
-
-        
     }
 
     return 0;
