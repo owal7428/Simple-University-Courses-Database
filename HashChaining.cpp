@@ -81,7 +81,7 @@ void HashChaining::bulkInsert(string filename)
             i++;
         }
 
-        string profName = array[5] + " " + array[6];             //Gets the full name of the professor in one string
+        string profName = array[5] + " " + array[6];            //Gets the full name of the professor in one string
         profDb.addProfessor(array[4], profName);                //Adds professor to the profDB if it doesn't already exist
         Professor *newProf = profDb.searchProfessor(profName);  //Creates temp professor object
 
