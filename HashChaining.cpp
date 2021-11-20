@@ -14,6 +14,9 @@ HashChaining::HashChaining(int size)
     hashTableSize = size;   //Sets value of hashTableSize
 
     hashTable = new Course*[hashTableSize]; //Sets the size of hashTable
+
+    for (int i = 0; i < hashTableSize; i++)
+        hashTable[i] = nullptr;
 }
 
 //Deconstructor
@@ -65,7 +68,7 @@ void HashChaining::bulkInsert(string filename)
 
     string inputstr;
 
-    while (file >> inputstr)    //Loops through every line of the csv file
+    while (getline(file, inputstr, '\n'))    //Loops through every line of the csv file
     {
         if (topOfFile == true)  //Checks if the current line is the top
         {
@@ -84,15 +87,20 @@ void HashChaining::bulkInsert(string filename)
         }
 
         string profName = array[5] + " " + array[6];            //Gets the full name of the professor in one string
-        profDb.addProfessor(array[4], profName);                //Adds professor to the profDB if it doesn't already exist
-        Professor *newProf = profDb.searchProfessor(profName);  //Creates temp professor object
+        string profId = array[4];
+
+        profDb.addProfessor(profId, profName);                //Adds professor to the profDB if it doesn't already exist
+        Professor *newProf = profDb.searchProfessor(profId);  //Creates temp professor object
 
         Course *newCourse = new Course(stoi(array[0]), array[1], stoi(array[2]), array[3], newProf);    //Creates new course object
         newProf -> coursesTaught.push_back(newCourse);                                                  //Adds the new course object to courses taught
 
         int index = hash(stoi(array[2]));
 
-        if (hashTable[index])   //Checks for collision
+        //Thinks work correctly until here
+        //TEMPORARY COMMENT
+
+        if (hashTable[index] != nullptr)   //Checks for collision
         {
             numCollisions++;
 
