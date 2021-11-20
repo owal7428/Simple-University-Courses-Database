@@ -48,7 +48,7 @@ Creates new Professor node and then inserts into BST object
 void ProfBST::addProfessor(string profId, string profName)
 {
     if (searchProfessor(profId))    //Checks to see if the professor already exists in the tree
-        return;                     //Exits function if it does
+        return;
     
     Professor *newProfessor = new Professor();  //Creates the new Professor object
 
@@ -61,14 +61,12 @@ void ProfBST::addProfessor(string profId, string profName)
         root = newProfessor;    //If it does not, it makes the root equal to the new node
     
     else
-        addHelper(newProfessor, root);  //Recursive loop to place new object in the correct position
-    
-    
+        addHelper(newProfessor, root);
 }
 
 /*
 ================
-//addHelper
+addHelper
 
 Helper to addProfessor function
 Recursively looks through BST to find correct location for new node
@@ -91,15 +89,22 @@ void addHelper(Professor *&node, Professor *root)
     return;
 }
 
+//Calls the searchHelper function
 Professor* ProfBST::searchProfessor(string profId)
 {
-    return searchHelper(root, profId);
+    return searchHelper(root, profId);  
 }
 
+/*
+================
+searchHelper
+
+Recursively looks through the BST to find specific node
+Returns null if the node is not found
+================
+*/
 Professor* searchHelper(Professor *root, string profId)
 {
-    Professor *temp = nullptr;
-
     if (root == nullptr)
         return nullptr;
     
@@ -107,15 +112,20 @@ Professor* searchHelper(Professor *root, string profId)
         return root;
     
     else if (profId > root -> profId)
-        temp = searchHelper(root -> right, profId);
+        return searchHelper(root -> right, profId);
     
-    else if (profId < root -> profId)
-        temp = searchHelper(root -> left, profId);
-    
-    return temp;
+    else
+        return searchHelper(root -> left, profId);
 
 }
 
+/*
+================
+publicSearchProfessor
+
+Finds professor node with specific ID and prints the courses they've taught
+================
+*/
 void ProfBST::publicSearchProfessor(string profId)
 {
     Professor *temp = searchProfessor(profId);
