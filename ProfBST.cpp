@@ -16,12 +16,6 @@ ProfBST::ProfBST()
     root = NULL;
 }
 
-//Destructor
-ProfBST::~ProfBST()
-{
-    deleteAll(root);    //Starts the deleteAll recursive loop at the root node
-}
-
 /*
 ================
 deleteAll
@@ -36,6 +30,37 @@ void deleteAll(Professor* node)
     deleteAll(node -> right);   
 
     delete node;    //Deletes node.
+}
+
+//Destructor
+ProfBST::~ProfBST()
+{
+    deleteAll(root);    //Starts the deleteAll recursive loop at the root node
+}
+
+/*
+================
+addHelper
+
+Helper to addProfessor function
+Recursively looks through BST to find correct location for new node
+================
+*/
+void addHelper(Professor *&node, Professor *root)
+{
+    if (root == nullptr)    //If the current node being searched is null, insert here
+    {
+        root = node;
+        return;
+    }
+    
+    if (node -> profId > root -> profId)    //Checks if the current node should go left
+        addHelper(node, root -> right);     //Or right of current root
+    
+    else if (node -> profId < root -> profId)
+        addHelper(node, root -> left);
+    
+    return;
 }
 
 /*
@@ -66,37 +91,6 @@ void ProfBST::addProfessor(string profId, string profName)
 
 /*
 ================
-addHelper
-
-Helper to addProfessor function
-Recursively looks through BST to find correct location for new node
-================
-*/
-void addHelper(Professor *&node, Professor *root)
-{
-    if (root == nullptr)    //If the current node being searched is null, insert here
-    {
-        root = node;
-        return;
-    }
-    
-    if (node -> profId > root -> profId)    //Checks if the current node should go left
-        addHelper(node, root -> right);     //Or right of current root
-    
-    else if (node -> profId < root -> profId)
-        addHelper(node, root -> left);
-    
-    return;
-}
-
-//Calls the searchHelper function
-Professor* ProfBST::searchProfessor(string profId)
-{
-    return searchHelper(root, profId);  
-}
-
-/*
-================
 searchHelper
 
 Recursively looks through the BST to find specific node
@@ -117,6 +111,12 @@ Professor* searchHelper(Professor *root, string profId)
     else
         return searchHelper(root -> left, profId);
 
+}
+
+//Calls the searchHelper function
+Professor* ProfBST::searchProfessor(string profId)
+{
+    return searchHelper(root, profId);  
 }
 
 /*
@@ -151,9 +151,9 @@ void ProfBST::displayProfessorInfo(Professor* p)
     cout << "Name: " << p -> profName << endl;  //Prints name of professor
 
     for (int i = 0; i < p -> coursesTaught.size(); i++)  //Goes through every course the professor has taught
-        {
-            cout << "-" << p -> coursesTaught[i] -> courseNum << ": ";
-            cout << p -> coursesTaught[i] -> courseName << ", ";
-            cout << p -> coursesTaught[i] -> year << endl;
-        }
+    {
+        cout << "-" << p -> coursesTaught[i] -> courseNum << ": ";
+        cout << p -> coursesTaught[i] -> courseName << ", ";
+        cout << p -> coursesTaught[i] -> year << endl;
+    }
 }
