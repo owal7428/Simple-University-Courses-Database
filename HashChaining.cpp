@@ -51,17 +51,45 @@ bulkInsert
 void HashChaining::bulkInsert(string filename)
 {
     ifstream file (filename);
+    int index;
 
+    bool topOfFile = true;
+    
     if (file.fail())
     {
         cout << "Failed to open the file." << endl;
         return;
     }
+    
+    string inputstr;
+
+    while (file >> inputstr)
+    {
+        if (topOfFile == true)
+        {
+            topOfFile = false;
+            continue;
+        }
+
+        istringstream tempstr(inputstr);
+        string array[7];
+
+        int i = 0;
+        while (getline(tempstr, inputstr, ','))
+        {
+            array[i] = inputstr;
+            i++;
+        }
+
+        profDb.addProfessor(array[4], array[5] + array[6]);
+        Course *newCourse = new Course(stoi(array[0]), array[1], stoi(array[2]), array[3], profDb.searchProfessor(array[5] + array[6]));
+
+    }
 }
 
 void HashChaining::search(int courseYear, int courseNumber, string profId)
 {
-
+    int index = hash(courseNumber);
 }
 
 /*
