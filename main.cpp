@@ -81,7 +81,18 @@ int main (int argc, char* argv[])
         }
         else if (choice == 3)
         {
+            cout << "Enter a Professor's ID (e.g. nscollan0):" << endl;
+            string profId;
+            cin >> profId;
 
+            cout << endl;
+            cout << "[OPEN ADDRESSING] Search for a professor" << endl;
+            cout << "----------------------------------------" << endl;
+            //openHash.profDb.publicSearchProfessor(profId);
+            cout << endl;
+            cout << "[CHAINING] Search for a professor" << endl;
+            cout << "---------------------------------" << endl;
+            chainHash.profDb.publicSearchProfessor(profId);
         }
         else if (choice == 4)
         {
