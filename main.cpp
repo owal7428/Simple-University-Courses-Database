@@ -28,7 +28,7 @@ int main (int argc, char* argv[])
     string filename = argv[1];
 
     HashChaining chainHash(stoi(argv[2]));
-    //HashOpenAddressing openHash(stoi(argv[2]));
+    HashOpenAddressing openHash(stoi(argv[2]));
 
     while (true)
     {
@@ -50,7 +50,7 @@ int main (int argc, char* argv[])
         {
             cout << "[OPEN ADDRESSING] Hash table populated" << endl;
             cout << "--------------------------------------" << endl;
-            //openHash.bulkInsert(filename);
+            openHash.bulkInsert(filename);
             cout << endl;
             cout << "[CHAINING] Hash table populated" << endl;
             cout << "-------------------------------" << endl;
@@ -88,7 +88,7 @@ int main (int argc, char* argv[])
             cout << endl;
             cout << "[OPEN ADDRESSING] Search for a professor" << endl;
             cout << "----------------------------------------" << endl;
-            //openHash.profDb.publicSearchProfessor(profId);
+            openHash.profDb.publicSearchProfessor(profId);
             cout << endl;
             cout << "[CHAINING] Search for a professor" << endl;
             cout << "---------------------------------" << endl;
