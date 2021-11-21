@@ -10,17 +10,21 @@ using namespace std;
 
 HashOpenAddressing::HashOpenAddressing(int size)
 {
+    hashTableSize = size;   //Sets value of hashTableSize
 
+    hashTable = new Course*[hashTableSize]; //Sets the size of hashTable
 }
 
 HashOpenAddressing::~HashOpenAddressing()
 {
+    profDb.~ProfBST();  //Deletes the BST of professors
 
+    delete[] hashTable; //Deletes array of pointers
 }
 
 int HashOpenAddressing::hash(int courseNumber)
 {
-
+    return courseNumber % hashTableSize;
 }
 
 void HashOpenAddressing::bulkInsert(string filename)
