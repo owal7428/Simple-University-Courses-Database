@@ -73,7 +73,7 @@ int main (int argc, char* argv[])
             cout << endl;
             cout << "[OPEN ADDRESSING] Search for a course" << endl;
             cout << "-------------------------------------" << endl;
-            //openHash.search(year, courseNum, Id);
+            openHash.search(year, courseNum, Id);
             cout << endl;
             cout << "[CHAINING] Search for a course" << endl;
             cout << "------------------------------" << endl;
@@ -106,7 +106,7 @@ int main (int argc, char* argv[])
             {
                 cout << "[OPEN ADDRESSING] displayAllCourses()" << endl;
                 cout << "-------------------------------------" << endl;
-                //openHash.displayAllCourses();
+                openHash.displayAllCourses();
             }
             else
             {
