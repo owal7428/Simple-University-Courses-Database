@@ -106,7 +106,29 @@ void HashOpenAddressing::bulkInsert(string filename)
 
 void HashOpenAddressing::search(int courseYear, int courseNumber, string profId)
 {
+    int index = hash(courseNumber);
+    int numSearches = 0;
 
+    Course *temp = nullptr;
+
+    for (int i = 0; i < hashTableSize; i++)
+    {
+        numSearches++;
+        int newIndex = hash(index + i * i);
+
+        if (hashTable[newIndex] -> year == courseYear && hashTable[newIndex] -> courseNum == courseNumber && hashTable[newIndex] -> prof -> profId == profId)
+        {
+            temp = hashTable[newIndex];
+            break;
+        }
+    }
+
+    if (temp != nullptr)
+    {
+        cout << "Search operations using open addressing: " << numSearches << endl;
+    }
+
+    displayCourseInfo(temp);
 }
 
 void HashOpenAddressing::displayAllCourses()
