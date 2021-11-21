@@ -160,7 +160,7 @@ void HashChaining::search(int courseYear, int courseNumber, string profId)
 
     if (temp != nullptr)
     {
-        cout << "Search operations using open addressing: " << numSearches << endl;
+        cout << "Search operations using chaining: " << numSearches << endl;
     }
 
     displayCourseInfo(temp);
