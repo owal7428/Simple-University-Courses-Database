@@ -96,7 +96,24 @@ int main (int argc, char* argv[])
         }
         else if (choice == 4)
         {
+            cout << "Which hash table would you like to display the courses for (O=Open Addressing, C=Chaining)?" << endl;
+            string choice;
+            cin >> choice;
 
+            cout << endl;
+
+            if (choice == "O")
+            {
+                cout << "[OPEN ADDRESSING] displayAllCourses()" << endl;
+                cout << "-------------------------------------" << endl;
+                //openHash.displayAllCourses();
+            }
+            else
+            {
+                cout << "[CHAINING] displayAllCourses()" << endl;
+                cout << "------------------------------" << endl;
+                chainHash.displayAllCourses();
+            }
         }
         else if (choice == 5)
         {
