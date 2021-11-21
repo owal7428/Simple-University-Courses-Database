@@ -80,7 +80,7 @@ void HashOpenAddressing::bulkInsert(string filename)
         {
             numCollisions++;
 
-            for (int i = 0; i < hashTableSize; i++)
+            for (int i = 1; i < hashTableSize; i++)
             {
                 numSearches++;
                 int newIndex = hash(index + i * i);
