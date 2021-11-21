@@ -23,12 +23,12 @@ int main (int argc, char* argv[])
         return 0;
     }
 
-    //Note: hashtable size needs to be the number of lines in the file - 1 to account for the top line being skipped
+    //Note: hashtable size is number of lines - 1 to account for the first line not being counted
 
     string filename = argv[1];
 
-    HashChaining chainHash(stoi(argv[2]));
-    HashOpenAddressing openHash(stoi(argv[2]));
+    HashChaining chainHash(stoi(argv[2]) - 1);
+    HashOpenAddressing openHash(stoi(argv[2]) - 1);
 
     while (true)
     {
