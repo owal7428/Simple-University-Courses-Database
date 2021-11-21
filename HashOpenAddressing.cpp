@@ -76,8 +76,6 @@ void HashOpenAddressing::bulkInsert(string filename)
 
         int index = hash(stoi(array[2]));
 
-        //WORKS UNTIL HERE
-
         if (hashTable[index] != nullptr)   //Checks for collision
         {
             numCollisions++;
