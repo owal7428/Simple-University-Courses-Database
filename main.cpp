@@ -23,14 +23,14 @@ int main (int argc, char* argv[])
         return 0;
     }
 
-    //Note: hashtable size needs to be the number of lines in the file - 1 to account for the top line being skipped
+    //Note: hashtable size is number of lines - 1 to account for the first line not being counted
 
     string filename = argv[1];
 
-    HashChaining chainHash(stoi(argv[2]));
-    HashOpenAddressing openHash(stoi(argv[2]));
+    HashChaining chainHash(stoi(argv[2]) - 1);
+    HashOpenAddressing openHash(stoi(argv[2]) - 1);
 
-    while (true)
+    while (true)    //Continuously prints menu and checks for input until user decides to exit
     {
         cout << endl;
         cout << "========Main Menu========" << endl;
@@ -40,13 +40,22 @@ int main (int argc, char* argv[])
         cout << "4. Display all courses" << endl;
         cout << "5. Exit" << endl;
         cout << endl;
-
+        
         int choice;
         cout << "Enter an option: ";
-        cin >> choice;
+        
+        cin >> choice;                  //Gets input from the user
         cout << endl;
 
-        if (choice == 1)
+        if (cin.fail()) //Checks if the user has typed non-integer input
+        {
+            cin.clear();                //Clears input buffer
+            cin.ignore(INT_MAX, '\n');  //Discards bad input
+            cout << "Invalid input. Please re-enter." << endl;
+            continue;
+        }
+        
+        if (choice == 1)    //Checks which option the user chooses
         {
             cout << "[OPEN ADDRESSING] Hash table populated" << endl;
             cout << "--------------------------------------" << endl;
@@ -102,7 +111,7 @@ int main (int argc, char* argv[])
 
             cout << endl;
 
-            if (choice == "O")
+            if (choice == "O" || choice == "o")
             {
                 cout << "[OPEN ADDRESSING] displayAllCourses()" << endl;
                 cout << "-------------------------------------" << endl;
@@ -121,7 +130,7 @@ int main (int argc, char* argv[])
         }
         else
         {
-            cout << "Improper input" << endl;
+            cout << "Invalid input. Please re-enter." << endl;
         }
     }
 

@@ -11,5 +11,10 @@ The objective of this project is to write an application that reads a list of Un
 3. Download the [GitHub presentation slide deck](https://drive.google.com/file/d/12mMxMGRrpnkSuz08FUlvkhC-9WJ4JHns/view?usp=sharing) created by Asa Ashraf.<br/>
 4. View the GitHub lecture videos [Part I](https://drive.google.com/file/d/1P4iqEbt9Nx68-Nq0FxxpdBZCrbkx5cN3/view?usp=sharing) and [Part II](https://drive.google.com/file/d/1EFYq_qJsV3QNcx_W86nz2KFpQUhSn9jF/view?usp=sharing) given by Asa Ashraf.
 
+## Answers to ReadMe Questions
+1. I think that the chaining method of collision resolution works better. I think this because the chaining method is able to fill the hash table with less collisions and search operations than the open addressing method. It is also able to find a specific course using less search operations than open addressing as well.
+2. I think than an alternative data structure to the BST for the database of professors could be another hash table filled with professor pointers. I think this would be useful because it would be much faster to search for a specific professor with a hash table than a BST.
+3. One way that I would improve this application is changing the parameters on some of the functions. I would do this because many helper functions could be removed if the regular functions had more parameters.
+
 ## Disclaimer
 Students are not allowed to share this code or make it public at any time, even after the course has completed.
