@@ -111,7 +111,7 @@ int main (int argc, char* argv[])
 
             cout << endl;
 
-            if (choice == "O")
+            if (choice == "O" || choice == "o")
             {
                 cout << "[OPEN ADDRESSING] displayAllCourses()" << endl;
                 cout << "-------------------------------------" << endl;
