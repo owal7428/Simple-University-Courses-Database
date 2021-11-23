@@ -13,3 +13,9 @@ The objective of this project is to write an application that reads a list of Un
 
 ## Disclaimer
 Students are not allowed to share this code or make it public at any time, even after the course has completed.
+
+## Answers to ReadMe Questions
+
+1. I think that the chaining method of collision resolution works better. I think this because the chaining method is able to fill the hash table with less collisions and search operations than the open addressing method. It is also able to find a specific course using less search operations than open addressing as well.
+2. I think than an alternative data structure to the BST for the database of professors could be another hash table filled with professor pointers. I think this would be useful because it would be much faster to search for a specific professor with a hash table than a BST.
+3. One way that I would improve this application is changing the parameters on some of the functions. I would do this because many helper functions could be removed if the regular functions had more parameters.
