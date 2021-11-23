@@ -8,6 +8,7 @@
 
 using namespace std;
 
+//Constructor
 HashOpenAddressing::HashOpenAddressing(int size)
 {
     hashTableSize = size;   //Sets value of hashTableSize
@@ -18,6 +19,7 @@ HashOpenAddressing::HashOpenAddressing(int size)
         hashTable[i] = nullptr;
 }
 
+//Deconstructor
 HashOpenAddressing::~HashOpenAddressing()
 {
     profDb.~ProfBST();  //Deletes the BST of professors
@@ -25,11 +27,22 @@ HashOpenAddressing::~HashOpenAddressing()
     delete[] hashTable; //Deletes array of pointers
 }
 
+//Hash function
 int HashOpenAddressing::hash(int courseNumber)
 {
     return courseNumber % hashTableSize;
 }
 
+/*
+================
+bulkInsert
+
+Reads every line in the csv file give (except for the first line)
+Creates new professor object if one doesn't already exist for the professor for a course
+Creates new course object and adds it to the hash table
+Resolves collisions using open addressing (quadratic probing)
+================
+*/
 void HashOpenAddressing::bulkInsert(string filename)
 {
     ifstream file (filename);
@@ -65,7 +78,7 @@ void HashOpenAddressing::bulkInsert(string filename)
             i++;
         }
 
-        string profName = array[5] + " " + array[6];            //Gets the full name of the professor in one string
+        string profName = array[5] + " " + array[6];    //Gets the full name of the professor in one string
         string profId = array[4];
 
         profDb.addProfessor(profId, profName);                //Adds professor to the profDB if it doesn't already exist
@@ -80,12 +93,12 @@ void HashOpenAddressing::bulkInsert(string filename)
         {
             numCollisions++;
 
-            for (int i = 1; i < hashTableSize; i++)
+            for (int i = 1; i < hashTableSize; i++) //Implementation of quadratic probing
             {
                 numSearches++;
-                int newIndex = hash(index + i * i);
+                int newIndex = hash(index + i * i); //Finds new index to check
 
-                if (hashTable[newIndex] == nullptr)
+                if (hashTable[newIndex] == nullptr) //Checks if new index is empty
                 {
                     hashTable[newIndex] = newCourse;
                     break;
@@ -102,6 +115,14 @@ void HashOpenAddressing::bulkInsert(string filename)
     cout << "Search operations using chaining: " << numSearches << endl;
 }
 
+/*
+================
+search
+
+Looks through every index in the hash table using quadratic probing until correct course is found
+If no node is found, nullptr is passed to displayCourseInfo
+================
+*/
 void HashOpenAddressing::search(int courseYear, int courseNumber, string profId)
 {
     int index = hash(courseNumber);
@@ -112,7 +133,7 @@ void HashOpenAddressing::search(int courseYear, int courseNumber, string profId)
     for (int i = 0; i < hashTableSize; i++)
     {
         numSearches++;
-        int newIndex = hash(index + i * i);
+        int newIndex = hash(index + i * i); //Finds new index using quadratic probing
 
         if (hashTable[newIndex] -> year == courseYear && hashTable[newIndex] -> courseNum == courseNumber && hashTable[newIndex] -> prof -> profId == profId)
         {
@@ -129,6 +150,7 @@ void HashOpenAddressing::search(int courseYear, int courseNumber, string profId)
     displayCourseInfo(temp);
 }
 
+//Loops through every index in the hash table and prints info in that index 
 void HashOpenAddressing::displayAllCourses()
 {
     for (int i = 0; i < hashTableSize; i++) //Loops through index of the hashTable
@@ -138,6 +160,7 @@ void HashOpenAddressing::displayAllCourses()
     }
 }
 
+//Prints out all info in a course
 void HashOpenAddressing::displayCourseInfo(Course* c)
 {
 	if (c == nullptr)
