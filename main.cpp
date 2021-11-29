@@ -30,6 +30,8 @@ int main (int argc, char* argv[])
     HashChaining chainHash(stoi(argv[2]) - 1);
     HashOpenAddressing openHash(stoi(argv[2]) - 1);
 
+    bool hasPopulated = false;
+
     while (true)    //Continuously prints menu and checks for input until user decides to exit
     {
         cout << endl;
@@ -57,6 +59,12 @@ int main (int argc, char* argv[])
         
         if (choice == 1)    //Checks which option the user chooses
         {
+            if (hasPopulated == true)
+            {
+                cout << "You have already populated the hash tables." << endl;
+                continue;
+            }
+
             cout << "[OPEN ADDRESSING] Hash table populated" << endl;
             cout << "--------------------------------------" << endl;
             openHash.bulkInsert(filename);
@@ -64,6 +72,8 @@ int main (int argc, char* argv[])
             cout << "[CHAINING] Hash table populated" << endl;
             cout << "-------------------------------" << endl;
             chainHash.bulkInsert(filename);
+
+            hasPopulated = true;
         }
         else if (choice == 2)
         {
