@@ -19,6 +19,7 @@ int main (int argc, char* argv[])
     {
         cout << "Invalid number of arguments." << endl;
         cout << "Usage: ./<program name> <csv file> <hashTable size>" << endl;
+        cout << endl;
 
         return 0;
     }
