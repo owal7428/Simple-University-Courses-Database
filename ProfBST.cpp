@@ -13,7 +13,7 @@ using namespace std;
 //Constructor
 ProfBST::ProfBST()
 {
-    root = NULL;
+    root = nullptr;
 }
 
 /*
@@ -24,43 +24,49 @@ Helper function for ~ProfBST
 Recursively goes through every node and deletes
 ================
 */
-void deleteAll(Professor* node)
+void deleteAll(Professor *&node)
 {
+    if (node == nullptr)
+        return;
+    
     deleteAll(node -> left);    //Post-order traversal for the BST
     deleteAll(node -> right);   
 
-    delete node;    //Deletes node.
+    delete node;    //Deletes node
 }
 
 //Destructor
 ProfBST::~ProfBST()
 {
     deleteAll(root);    //Starts the deleteAll recursive loop at the root node
+    root = NULL;
 }
 
 /*
 ================
-addHelper
+insertNode
 
 Helper to addProfessor function
 Recursively looks through BST to find correct location for new node
 ================
 */
-void addHelper(Professor *&node, Professor *&root)
+Professor* insertNode(Professor *newNode, Professor *root)
 {
-    if (root == nullptr)    //If the current node being searched is null, insert here
+    if (root == nullptr)    //Checks if location in tree is found
     {
-        root = node;
-        return;
+        return newNode;    //Places the new node in that location
     }
-    
-    if (node -> profId > root -> profId)    //Checks if the current node should go left
-        addHelper(node, root -> right);     //Or right of current root
-    
-    else if (node -> profId < root -> profId)
-        addHelper(node, root -> left);
-    
-    return;
+ 
+    if (newNode -> profId > root -> profId)     //Recursively looks through tree
+    {
+        root->right = insertNode(newNode, root -> right); 
+    }
+    else
+    {
+        root -> left = insertNode(newNode, root -> left);
+    }
+ 
+    return root;
 }
 
 /*
@@ -86,7 +92,7 @@ void ProfBST::addProfessor(string profId, string profName)
         root = newProfessor;    //If it does not, it makes the root equal to the new node
     
     else
-        addHelper(newProfessor, root);
+        insertNode(newProfessor, root);
 }
 
 /*

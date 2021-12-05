@@ -96,11 +96,11 @@ void HashOpenAddressing::bulkInsert(string filename)
             for (int i = 1; i < hashTableSize; i++) //Implementation of quadratic probing
             {
                 numSearches++;
-                int newIndex = hash(index + i * i); //Finds new index to check
+                index = hash(index + i * i); //Finds new index to check
 
-                if (hashTable[newIndex] == nullptr) //Checks if new index is empty
+                if (hashTable[index] == nullptr) //Checks if new index is empty
                 {
-                    hashTable[newIndex] = newCourse;
+                    hashTable[index] = newCourse;
                     break;
                 }
             }
@@ -135,7 +135,10 @@ void HashOpenAddressing::search(int courseYear, int courseNumber, string profId)
         numSearches++;
         int newIndex = hash(index + i * i); //Finds new index using quadratic probing
 
-        if (hashTable[newIndex] -> year == courseYear && hashTable[newIndex] -> courseNum == courseNumber && hashTable[newIndex] -> prof -> profId == profId)
+        if (hashTable[newIndex] == nullptr)
+            continue;
+
+        else if (hashTable[newIndex] -> year == courseYear && hashTable[newIndex] -> courseNum == courseNumber && hashTable[newIndex] -> prof -> profId == profId)
         {
             temp = hashTable[newIndex];
             break;
