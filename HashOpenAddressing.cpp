@@ -133,14 +133,14 @@ void HashOpenAddressing::search(int courseYear, int courseNumber, string profId)
     for (int i = 0; i < hashTableSize; i++)
     {
         numSearches++;
-        int newIndex = hash(index + i * i); //Finds new index using quadratic probing
+        index = hash(index + i * i); //Finds new index using quadratic probing
 
-        if (hashTable[newIndex] == nullptr)
+        if (hashTable[index] == nullptr)
             continue;
 
-        else if (hashTable[newIndex] -> year == courseYear && hashTable[newIndex] -> courseNum == courseNumber && hashTable[newIndex] -> prof -> profId == profId)
+        else if (hashTable[index] -> year == courseYear && hashTable[index] -> courseNum == courseNumber && hashTable[index] -> prof -> profId == profId)
         {
-            temp = hashTable[newIndex];
+            temp = hashTable[index];
             break;
         }
     }
