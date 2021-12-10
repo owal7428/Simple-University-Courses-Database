@@ -15,7 +15,17 @@ using namespace std;
 
 int main (int argc, char* argv[])
 {
-    if (argc != 3)
+    string filename;
+    int file_size;
+
+    if (argc == 1)
+    {
+        cout << "File Path and Name:";
+        cin >> filename;
+        cout << "File size:";
+        cin >> file_size;
+    }
+    else if (argc != 3)
     {
         cout << "Invalid number of arguments." << endl;
         cout << "Usage: ./<program name> <csv file> <hashTable size>" << endl;
@@ -23,13 +33,16 @@ int main (int argc, char* argv[])
 
         return 0;
     }
+    else
+    {
+        filename = argv[1];
+        file_size = stoi(argv[2]);
+    }
 
     //Note: hashtable size is number of lines - 1 to account for the first line not being counted
 
-    string filename = argv[1];
-
-    HashChaining chainHash(stoi(argv[2]) - 1);
-    HashOpenAddressing openHash(stoi(argv[2]) - 1);
+    HashChaining chainHash(file_size - 1);
+    HashOpenAddressing openHash(file_size - 1);
 
     bool hasPopulated = false;
 
